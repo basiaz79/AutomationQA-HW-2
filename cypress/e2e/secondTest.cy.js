@@ -25,7 +25,7 @@ describe('Login Test 2', () => {
         cy.visit("https://www.edu.goit.global/account/login")
     });
 
-    it('Test 2: Login and Logout with different credentials', () => {
+    it('Test 2 Login and Logout with different data', () => {
         cy.get('#user_email').type("testowyqa@qa.team");
         cy.get('input[type="password"]').type("QA!automation-1");
         cy.get('button[type="submit"]').click();
