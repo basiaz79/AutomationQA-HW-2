@@ -1,19 +1,4 @@
-describe("User can visit GoIT page", () => {
-    beforeEach("Go to page", () => {
-        cy.visit("https://www.edu.goit.global/account/login")
-    });
-    
-    it("First Test log in and out", () => {
-        cy.get('#user_email').type("user888@gmail.com");
-        cy.get('input[type="password"]').type("1234567890");
-        cy.get('button[type="submit"]').click();
-    });
-});
-
-  
-
-
-  describe('Login Test 1', () => {
+describe('Login Test 1', () => {
     beforeEach("Go to page", () => {
         cy.visit("https://www.edu.goit.global/account/login")
     });
@@ -35,7 +20,7 @@ describe("User can visit GoIT page", () => {
   });
 
   
-  describe('Login Test 2', () => {
+describe('Login Test 2', () => {
     beforeEach("Go to page", () => {
         cy.visit("https://www.edu.goit.global/account/login")
     });
