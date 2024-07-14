@@ -1,4 +1,4 @@
-export class Homepage {
+export class HomePage {
   // Navigate to menu
   openMenu() {
     cy.get('#open.menu').click();
