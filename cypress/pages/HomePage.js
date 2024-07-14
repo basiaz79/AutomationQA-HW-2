@@ -1,18 +1,24 @@
-import { Login } from "../pages/Login";
+export class Login {
+  navigate() {
+    cy.visit("https://www.edu.goit.global/account/login");
+  }
 
-const LoginPage = new Login();
+  validateLoginTitle() {
+    cy.get(".css-10stgr7 > .css-c1vj7d").should("be.visible");
+    cy.get(".css-10stgr7 > .css-c1vj7d").should("have.text", "Login");
+  }
 
-describe("Page object example", () => {
-  it("login page test", () => {
-    // visit page
-    LoginPage.navigate();
-    // check title
-    LoginPage.validateLoginTitle();
-    // check inputs
-    LoginPage.validateInputs();
-    // check button
-    LoginPage.validateButton();
-    // check link
-    LoginPage.validatePasswordLink();
-  });
-});
+  validateInputs() {
+    cy.get("#user_email").should("be.visible");
+    cy.get("#user_password").should("be.visible");
+  }
+
+  validateButton() {
+    cy.get(".eckniwg2").should("be.visible");
+  }
+
+  validatePasswordLink() {
+    cy.get(".css-1f1fv1i > .css-1qrvie4").should("be.visible");
+    cy.get(".css-1f1fv1i > .css-1qrvie4").should("have.text", "I can't remember the password");
+  }
+}
