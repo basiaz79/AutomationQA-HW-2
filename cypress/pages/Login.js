@@ -1,18 +1,30 @@
-import { Login } from "../pages/Login";
+export class Login {
+    // Navigate to page
+    navigate() {
+      cy.visit("https://www.edu.goit.global/account/login");
+    }
+  
+    // Validate Login form
+    validateLoginform() {
+      cy.get("#user_email").should("be.visible");
+      cy.get("#user_password").should("be.visible");
+      cy.contains('Log in').should("be.visible");
+    }
 
-const LoginPage = new Login();
+    // Login Input Credentials
+    typeLogInCredentials(loginCredential, passwordCredential) {
+        //Typing and validating login credentials
+        cy.get("#user_email").type(loginCredential);
+        cy.get("#user_email").should('have.value', loginCredential);
+        // Typing and validating password credentials
+        cy.get("#user_password").type(passwordCredential);
+        cy.get("#user_password").should('have.value', passwordCredential);
+    }
 
-describe("Page object example", () => {
-  it("login page test", () => {
-    // visit page
-    LoginPage.navigate();
-    // check title
-    LoginPage.validateLoginTitle();
-    // check inputs
-    LoginPage.validateInputs();
-    // check button
-    LoginPage.validateButton();
-    // check link
-    LoginPage.validatePasswordLink();
-  });
-});
+    // Submit login credentials 
+    loginSubmit() {
+        cy.contains('Log in').click();
+    }
+}
+  
+    
