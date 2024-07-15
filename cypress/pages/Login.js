@@ -4,8 +4,8 @@ export class Login {
       cy.visit("https://www.edu.goit.global/account/login");
     }
   
-    // Validate Login form
-    validateLoginform() {
+    // Validate Login Form
+    validateLoginForm() {
       cy.get("#user_email").should("be.visible");
       cy.get("#user_password").should("be.visible");
       cy.contains('Log in').should("be.visible");
