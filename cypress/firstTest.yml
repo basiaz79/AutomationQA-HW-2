@@ -1,0 +1,40 @@
+config:
+  target: https://postman-echo.com/
+  phases:
+    - duration: 120
+      arrivalRate: 6
+      name: Artillery Homework
+  payload:
+    - path: "userkey.csv"
+      fields:
+        - "userkey1"
+        - "userkey2"
+  plugins:
+    ensure: {}
+  ensure:
+    thresholds:
+      - http.response_time.p95: 1000
+    conditions:
+      - expression: vusers.failed == 0
+      - expression: "http.request_rate >= 2"
+      - expression: "http.response_time.max < 600"
+scenarios:
+  - name: Getting a resource
+    flow:
+      - get:
+          url: "{{ target}}get"
+      - post:
+          url: "{{ target}}post"
+          json:
+            username: "{{ userkey1 }}"
+            password: "{{ userkey2 }}"
+          capture:
+            - json: "$.json"
+              as: "request_body"
+            - json: "$.headers.host"
+              as: "host"
+      - log: "Json value from response is: {{ request_body }}"
+      - log: "Host value from response is: {{ host }}"
+      - log: "Userkey1: {{ userkey1 }}"
+      - log: "Userkey2: {{ userkey2 }}"
+      
