@@ -1,4 +1,4 @@
-name: Moje testy
+name: Cypress API Tests
 
 on: [push]
 
